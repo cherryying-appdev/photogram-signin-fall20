@@ -5,7 +5,9 @@ class PhotosController < ApplicationController
   end
 
   def create
-    user_id = params.fetch("input_owner_id")
+    # user_id = params.fetch("input_owner_id")
+    # we are able to change it to session.fetch() because we've set the cookie now
+    user_id = session.fetch(:user_id)
     image = params.fetch("input_image")
     caption = params.fetch("input_caption")
     photo = Photo.new
